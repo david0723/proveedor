@@ -1,0 +1,66 @@
+<script type="text/template" id="proveedorList">
+    <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <table class="table striped">
+    <thead>
+    <tr>
+		 <th>name</th>
+		 <th>email</th>
+		 <th>telefono</th>
+		 <th>direccion</th>
+		 <th>observaciones</th>
+    <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% _.each(proveedors, function(proveedor) { %>
+    <tr>
+		<td><%= htmlEncode(proveedor.getDisplay('name')) %></td>
+		<td><%= htmlEncode(proveedor.getDisplay('email')) %></td>
+		<td><%= htmlEncode(proveedor.getDisplay('telefono')) %></td>
+		<td><%= htmlEncode(proveedor.getDisplay('direccion')) %></td>
+		<td><%= htmlEncode(proveedor.getDisplay('observaciones')) %></td>
+    <td>
+    <% if(showEdit) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-proveedor-edit',{id:<%= proveedor.id %>}); return false" >Edit</a> |
+	<% } %> 
+	<% if(showDelete) {%>
+    <a onclick="Backbone.trigger('<%= componentId %>-proveedor-delete',{id:<%= proveedor.id %>}); return false" >Delete</a> 
+	<% } %>    
+	</td>
+    </tr>
+    <% }); %>
+    </tbody>
+    </table>
+    </div>
+</script>
+
+<script type="text/template" id="proveedor">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-proveedorForm">
+    <% if(proveedor.id) {%>
+    <input type="hidden" name="id" value="<%= proveedor.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= proveedor.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="email">email</label>
+    	<input type="text" class="form-control" id="email" name="email" placeholder="Enter value" value="<%= proveedor.get('email') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="telefono">telefono</label>
+    	<input type="text" class="form-control" id="telefono" name="telefono" placeholder="Enter value" value="<%= proveedor.get('telefono') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="direccion">direccion</label>
+    	<input type="text" class="form-control" id="direccion" name="direccion" placeholder="Enter value" value="<%= proveedor.get('direccion') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="observaciones">observaciones</label>
+    	<input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="Enter value" value="<%= proveedor.get('observaciones') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

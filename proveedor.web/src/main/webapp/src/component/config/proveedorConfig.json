@@ -1,0 +1,9 @@
+{
+    "displayName" : "Proveedor",
+    "name" : "proveedor",
+    "templateName" : "proveedor",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/proveedor.service.subsystem.web/webresources/Proveedor",
+    "el" : "#main"
+}
